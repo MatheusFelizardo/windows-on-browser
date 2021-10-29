@@ -5,11 +5,13 @@ import { Icon } from '@fluentui/react/lib/Icon';
 interface ControllerButtonInterface {
     icon: string
     text: string
+    onClick?: () => void
+    className?: string
 }
 
-const ControllerButton = ({icon,text}: ControllerButtonInterface) => {
+const ControllerButton = ({icon,text, onClick, className}: ControllerButtonInterface) => {
     return (
-        <ControllerButtonWrapper>
+        <ControllerButtonWrapper className={className} onClick={onClick}>
         <div className="customIconWrapper">
             <CustomIcons iconName={icon} />
         </div>
@@ -27,6 +29,8 @@ const ControllerButtonWrapper = styled.div`
     gap: .5rem;
     align-items: center;
     margin: 1rem 0;
+    cursor: pointer;
+    width: fit-content;
     .customIconWrapper {
         display: flex;
         align-items: center;

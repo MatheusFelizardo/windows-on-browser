@@ -30,6 +30,7 @@ const RangeItemsWrapper = styled.div`
     justify-content: center;
     position: relative;
     gap: 1rem;
+    cursor: pointer;
     .customIconWrapper {
         display: flex;
         align-items: center;

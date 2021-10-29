@@ -12,7 +12,6 @@ interface BodyInterface {
 }
 
 const TaskBar = ({height}: BodyInterface): React.ReactElement => {
-    console.log(height)
     return (
         <TaskBarContainer altura={height}>
             <TaskBarWrapper>
@@ -43,7 +42,7 @@ const TaskBarContainer = styled.div<TaskBarContainerProps>`
     position: fixed;
     width: 100%;
     bottom: 0;
-    z-index: 9;
+    z-index: 9
 `
 const TaskBarWrapper = styled.div`
     width: 100%;

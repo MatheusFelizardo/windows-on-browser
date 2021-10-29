@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
+import PowerOff from '../Functionalities/PowerOff'
 import ControllerButton from './ControllerButton'
 import MostUsed from './MostUsed'
 import Profile from './Profile'
@@ -12,10 +13,13 @@ interface InitialMenuProps {
 }
 
 const InitialMenu = ({open, setShowModal}: InitialMenuProps) => {
-    if(!open) return null
+    const [showPowerOffMenu, setShowPowerOffMenu] = useState(false)
+    const [modalDisplay, setModalDisplay] = useState('flex')
 
+    console.log(showPowerOffMenu)
+    if(!open) return null
     return ReactDOM.createPortal(
-        <InitialMenuWrapper>
+        <InitialMenuWrapper modalDisplay={modalDisplay}>
             <div className="leftSideItems">
                 <Profile user="Matheus Felizardo"/>
 
@@ -29,8 +33,9 @@ const InitialMenu = ({open, setShowModal}: InitialMenuProps) => {
 
                 <div className="ControllerButtons">
                     <ControllerButton icon="FolderSearch" text="File Explorer" />
-                    <ControllerButton icon="SyncOccurence" text="Configurations" />
-                    <ControllerButton icon="PowerButton" text="Power" />
+                    <ControllerButton icon="SyncOccurence" text="Settings" />
+                    <ControllerButton className={'power_button'} icon="PowerButton" text="Power" onClick={()=> setShowPowerOffMenu(true)}/>
+                        <PowerOff showPowerOffMenu={showPowerOffMenu} setShowPowerOffMenu={setShowPowerOffMenu} setShowModal={setShowModal} setInitialMenuDisplay={setModalDisplay} />
                     <ControllerButton icon="BulletedList2" text="All Applications" />
                 </div>
             </div>
@@ -80,14 +85,18 @@ const InitialMenu = ({open, setShowModal}: InitialMenuProps) => {
     )
 }
 
-const InitialMenuWrapper = styled.div`
+type InitialMenuWrapperProps = {
+    modalDisplay?: string
+  }
+
+const InitialMenuWrapper = styled.div<InitialMenuWrapperProps>`
     padding: 1rem;
     width: 800px;
     height: 700px;
     position: absolute;
     bottom: 56px;
     background-color: #444;
-    display: flex;
+    display: ${props => props.modalDisplay};
     transform: translateY(1000px);
     animation: showModal .2s forwards;
     color: #fff;

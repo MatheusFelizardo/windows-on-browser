@@ -25,6 +25,7 @@ const MostUsedWrapper = styled.div`
     gap: .5rem;
     align-items: center;
     margin: .5rem 0;
+    cursor: pointer;
     .customIconWrapper {
         display: flex;
         align-items: center;
