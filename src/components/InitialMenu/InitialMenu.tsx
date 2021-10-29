@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import ControllerButton from './ControllerButton'
 import MostUsed from './MostUsed'
@@ -13,7 +14,7 @@ interface InitialMenuProps {
 const InitialMenu = ({open, setShowModal}: InitialMenuProps) => {
     if(!open) return null
 
-    return (
+    return ReactDOM.createPortal(
         <InitialMenuWrapper>
             <div className="leftSideItems">
                 <Profile user="Matheus Felizardo"/>
@@ -74,7 +75,8 @@ const InitialMenu = ({open, setShowModal}: InitialMenuProps) => {
                     </div>
                 </div>
             </div>
-        </InitialMenuWrapper>
+        </InitialMenuWrapper>, 
+        document.getElementById('menu-wrapper') as Element
     )
 }
 
@@ -87,8 +89,8 @@ const InitialMenuWrapper = styled.div`
     background-color: #444;
     display: flex;
     transform: translateY(1000px);
-    animation: showModal .1s forwards;
-    z-index: 1;
+    animation: showModal .2s forwards;
+    color: #fff;
     @keyframes showModal {
         0% {
             transform: translateY(1000px);

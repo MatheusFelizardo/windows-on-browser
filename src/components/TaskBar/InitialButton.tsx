@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { Icon } from '@fluentui/react/lib/Icon';
 import ReactDOM from 'react-dom';
@@ -29,7 +29,7 @@ const InitialButtonWrapper = styled.div`
     -ms-user-select: none;
 
     border-right: 1px solid#444;
-    z-index: 9;
+    
     &:hover {
         background-color:#444;
     }
