@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Icon } from '@fluentui/react/lib/Icon';
+import AccessibilityModal from '../Modal/Accessibility';
 
 const AccessibilityItems = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const showChevronUpModal = () => {
+        setIsOpen(prev => !prev)
+    }
+
     return (
-        <AccessibilityItemsWrapper>
-            <CustomIcons iconName="ChevronUp" />
-            <CustomWifi iconName="WifiWarning4" />
-            <CustomWifi iconName="Volume3" />
-            <LanguagePT> POR</LanguagePT>
-        </AccessibilityItemsWrapper>
+        <>
+            <AccessibilityModal setIsOpen={setIsOpen} isOpen={isOpen} />
+            <AccessibilityItemsWrapper>
+                <CustomIcons iconName="ChevronUp" onClick={showChevronUpModal} />
+                <CustomWifi iconName="WifiWarning4" />
+                <CustomWifi iconName="Volume3" />
+                <LanguagePT>POR</LanguagePT>
+            </AccessibilityItemsWrapper>
+        </>
     )
 }
 

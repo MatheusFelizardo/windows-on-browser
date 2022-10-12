@@ -5,6 +5,7 @@ import { initializeIcons } from '@fluentui/font-icons-mdl2';
 initializeIcons();
 
 function App() {
+
   return (
     <SystemWrapper />
   );
